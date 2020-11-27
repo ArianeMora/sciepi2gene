@@ -24,9 +24,9 @@ setup(name='scie2g',
       url='https://github.com/ArianeMora/loc2gene',
       license='GPL3',
       project_urls={
-          "Bug Tracker": "https://github.com/ArianeMora/loc2gene/issues",
-          "Documentation": "https://github.com/ArianeMora/loc2gene",
-          "Source Code": "https://github.com/ArianeMora/loc2gene",
+          "Bug Tracker": "https://github.com/ArianeMora/sciepi2gene/issues",
+          "Documentation": "https://github.com/ArianeMora/sciepi2gene",
+          "Source Code": "https://github.com/ArianeMora/sciepi2gene",
       },
       classifiers=[
           'Development Status :: 5 - Production/Stable',
@@ -39,7 +39,7 @@ setup(name='scie2g',
           'Programming Language :: Python :: 3.8',
           'Topic :: Scientific/Engineering :: Bio-Informatics',
       ],
-      keywords='util',
+      keywords=['epigenetics', 'bioinformatics'],
       packages=['scie2g'],
       entry_points={
           'console_scripts': [

@@ -1,11 +1,11 @@
-# sciepi2gene
+# sci-Epi2Gene
 [![codecov.io](https://codecov.io/github/ArianeMora/sciepi2gene/coverage.svg?branch=master)](https://codecov.io/github/ArianeMora/sciepi2gene?branch=master)
 [![PyPI](https://img.shields.io/pypi/v/sciepi2gene)](https://pypi.org/project/sciepi2gene/)
 
 
 
 Sci-epi2gene maps events annotated to a genome location to nearby genes - i.e. peaks from histone modification data
-ChIP-seq experiemnts stored as bed data, or DNA methylation data in csv format (e.g. output from DMRseq or methylKit).
+ChIP-seq experiemnts stored as bed data, or DNA methylation data in csv format (e.g. output from DMRseq, methylKit or methylSig).
 
 The user provides a SORTED gene annotation file with start, end, and direction for each gene (we recommend using
 [sci-biomart](https://github.com/ArianeMora/scibiomart), see examples for detail.  
