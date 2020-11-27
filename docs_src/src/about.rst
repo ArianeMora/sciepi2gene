@@ -10,8 +10,7 @@ The user provides a SORTED gene annotation file with start, end, and direction f
 `sci-biomart <https://github.com/ArianeMora/scibiomart>`_, see examples for detail.
 
 The user then selects how to annotate, i.e. whether it is in the promoter region, or overlaps the gene body. Finally,
-the parameters for overlap on each side are chosen. This algorithm only runs through the file once, so should have
-computational complexity of O(N).
+the parameters for overlap on each side are chosen.
 
 It is available under the `GNU General Public License (Version 3) <https://www.gnu.org/licenses/gpl-3.0.en.html>`_.
 
