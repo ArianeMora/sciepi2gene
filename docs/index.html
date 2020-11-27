@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sci-epi2gene &mdash; scie2g 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="_static/logo.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/custom.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="sci-epi2gene" href="about.html" />
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#">
+          
+
+          
+            
+            <img src="_static/logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">sci-epi2gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing/index.html">Installing sci-epi2gene</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Running sci-epi2gene</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/notebook.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/cli.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">scie2g</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>sci-epi2gene</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/arianemora/sciepi2gene/blob/master/docs_src/src/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="sci-epi2gene">
+<h1>sci-epi2gene<a class="headerlink" href="#sci-epi2gene" title="Permalink to this headline">¶</a></h1>
+<p>Sci-epi2gene maps events annotated to a genome location to nearby genes - i.e. peaks from histone modification data
+ChIP-seq experiemnts stored as bed data, or DNA methylation data in csv format (e.g. output from DMRseq or methylKit).</p>
+<p>The user provides a SORTED gene annotation file with start, end, and direction for each gene (we recommend using
+<a class="reference external" href="https://github.com/ArianeMora/scibiomart">sci-biomart</a>) see examples for detail.</p>
+<p>The user then selects how to annotate, i.e. whether it is in the promoter region, or overlaps the gene body. Finally,
+the parameters for overlap on each side are chosen.</p>
+<p>It is available under the <a class="reference external" href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License (Version 3)</a>.</p>
+<p>This package is a wrapper that allows various epigenetic data types to be annotated to genes.</p>
+<p>I also wanted to have different upper flanking and lower flanking distances that took into account the directionality of the strand
+and also an easy output csv file that can be filtered and used in downstream analyses. This is why I keep all features
+that fall within the annotation region of a gene (example below):</p>
+<dl class="simple">
+<dt>The overlapping methods are as follows:</dt><dd><ol class="arabic simple">
+<li><p>overlaps: this means does ANY part of the peak/feature overlap the gene body + some buffer before the TSS and some buffer on the non-TSS side</p></li>
+<li><p>promoter: does ANY part of the peak/feature overlap with the TSS of the gene taking into account buffers on either side of the TSS.</p></li>
+</ol>
+</dd>
+</dl>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/example_overlaps.png"><img alt="_images/example_overlaps.png" src="_images/example_overlaps.png" style="width: 800px;" /></a>
+</div>
+<p>As you can see from the above screenshot using IGV, the input peaks are in purple, and the green are the output
+peaks as annotated to genes. The function <em>convert_to_bed</em> converts the output csv to bed files for viewing. This example
+shows that a peak/feature can be annotated to multiple genes. Peaks/features outside of the regions of genes (e.g.
+the first peak) are dropped from the output.</p>
+<p>We show this example in the <span class="xref std std-ref">notebook</span>, where we use <a class="reference external" href="https://github.com/igvteam/igv-jupyter#igvjs-jupyter-extension">IGV</a>
+to view the tracks (see image below).</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/igv_jupyter.png"><img alt="_images/igv_jupyter.png" src="_images/igv_jupyter.png" style="width: 800px;" /></a>
+</div>
+<p>Lastly, there are sometimes differences between annotations (i.e. the TSS on your annotation in IGV may differ to the
+annotation you input to sciepi2gene), naturally, how your genes/features are annotated depends on the input file so if you see differences check this first!</p>
+<p>Please post questions and issues related to sci-epi2gene on the <a class="reference external" href="https://github.com/ArianeMora/sciepi2gene/issues">Issues</a>  section of the GitHub repository.</p>
+<div class="section" id="running-sci-epi2gene">
+<h2>Running sci-epi2gene<a class="headerlink" href="#running-sci-epi2gene" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Install sci-epi2gene (<a class="reference internal" href="installing/index.html#installing"><span class="std std-ref">Installing</span></a>)</p></li>
+<li><p>View markdown examples in (<span class="xref std std-ref">examples</span>)</p></li>
+<li><p>Look at an example notebook with output (<span class="xref std std-ref">notebook</span>)</p></li>
+<li><p>Look at CLI examples in (<span class="xref std std-ref">cli</span>)</p></li>
+</ol>
+</div>
+<div class="section" id="extending-sci-epi2gene">
+<h2>Extending sci-epi2gene<a class="headerlink" href="#extending-sci-epi2gene" title="Permalink to this headline">¶</a></h2>
+<p>1. Make a pull request on github - we have made the code extendable to add specific data types for parsing simply over-ride
+<cite>_assign_values</cite> and <cite>update_loc_value</cite> functions.</p>
+</div>
+<div class="section" id="citing-sci-epi2gene">
+<h2>Citing sci-epi2gene<a class="headerlink" href="#citing-sci-epi2gene" title="Permalink to this headline">¶</a></h2>
+<p>Sci-epi2gene can be cited as in <a class="reference internal" href="references.html#references"><span class="std std-ref">References</span></a>, where we also provide citations for the used tools (e.g. numpy).</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">sci-epi2gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing/index.html">Installing sci-epi2gene</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Running sci-epi2gene</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/notebook.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/cli.html">CLI</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Change log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="about.html" class="btn btn-neutral float-right" title="sci-epi2gene" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ariane Mora
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

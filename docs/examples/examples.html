@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; scie2g 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/custom.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Notebook" href="notebook.html" />
+    <link rel="prev" title="Installing sci-epi2gene" href="../installing/index.html" />
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">sci-epi2gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing sci-epi2gene</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Running sci-epi2gene</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#current-data-types-implemented">Current data types implemented</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#csv">1) CSV:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bed">2) Bed:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow">Workflow:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Bed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-bed-input">Example Bed input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bed-usage">Bed usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-bed-output">Example Bed output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3) CSV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-csv-input">Example csv input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csv-usage">CSV usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-csv-output">Example CSV output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multiprocessing">Multiprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebook.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scie2g</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../about.html">sci-epi2gene</a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/arianemora/sciepi2gene/blob/master/docs_src/src/examples/examples.md" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="current-data-types-implemented">
+<h2>Current data types implemented<a class="headerlink" href="#current-data-types-implemented" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="csv">
+<h3>1) CSV:<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+<p>This is just a generic csv data input. You need to input the header information (i.e. column name for chr, start, end,
+value). Does not require to be sorted (we sort it).</p>
+</div>
+<div class="section" id="bed">
+<h3>2) Bed:<a class="headerlink" href="#bed" title="Permalink to this headline">¶</a></h3>
+<p>Bed files are able to be mapped using this tool as well. There are examples in the tests. Here we
+keep both the width and the signal for a peak and assign that to a gene if it overlaps the gene body by default. We
+enforce a pre-specified ordering (e.g. following the protocol used in Encode). i.e. [CHROM, START, END, ID, SCORE, SIGNAL]</p>
+<p><strong>Note bed files are assumed to be sorted (used bedtools to sort if they aren’t already sorted).</strong></p>
+</div>
+<div class="section" id="workflow">
+<h3>Workflow:<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Ensure your input file is sorted by the event start (i.e. peak start for bed files)</p></li>
+<li><p>Initialise your class (i.e. Bed, DMRseq…)<br />2.a) Here you choose the overlap methods i.e.:<br /><em>overlap_method=’in_promoter’ or ‘overlaps’</em> –&gt; overlaps entire gene e.g. for H3K36me3<br /><em>buffer_after_tss=500</em> –&gt; buffer after gene stop when using overlaps<br /><em>buffer_before_tss=2500</em> –&gt; buffer before TSS in overlaps and in_promoter<br /><em>buffer_gene_overlap=500</em> –&gt; overlap with the gene when using in_promoter</p></li>
+<li><p>Add an annotation file - this has the gene identifiers and the locations of the gene (start, end, direction)<br />3.a) see examples here: https://github.com/ArianeMora/sciepi2ene/data/<br />3.b) function called: set_annotation_using_biomart or set_annotation_from_file</p></li>
+<li><p>Assign locations to genes<br />4.a) assign_locations_to_genes()</p></li>
+<li><p>Save output file<br />5.a) save_loc_to_csv(filename)
+5.b) convert_to_bed(dataframe, output_filename, label_for_track, value_column, name/id_column)</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Bed<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-bed-input">
+<h3>Example Bed input<a class="headerlink" href="#example-bed-input" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chr1</span>	<span class="mi">3669319</span>	<span class="mi">3669933</span>	<span class="n">Peak_39246</span>	<span class="mi">23</span>	<span class="o">.</span>	<span class="mf">2.95584</span>	<span class="mf">8.15439</span>	<span class="mf">6.38865</span>	<span class="mi">445</span>
+<span class="n">chr1</span>	<span class="mi">3670510</span>	<span class="mi">3670815</span>	<span class="n">Peak_111700</span>	<span class="mi">14</span>	<span class="o">.</span>	<span class="mf">2.17341</span>	<span class="mf">4.00125</span>	<span class="mf">2.48284</span>	<span class="mi">45</span>
+<span class="n">chr1</span>	<span class="mi">3672158</span>	<span class="mi">3672625</span>	<span class="n">Peak_23195</span>	<span class="mi">30</span>	<span class="o">.</span>	<span class="mf">3.47746</span>	<span class="mf">11.49358</span>	<span class="mf">9.59823</span>	<span class="mi">247</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bed-usage">
+<h3>Bed usage<a class="headerlink" href="#bed-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scie2g.bed</span> <span class="kn">import</span> <span class="n">Bed</span>
+
+<span class="c1"># Create an annotation file</span>
+<span class="n">bed</span> <span class="o">=</span> <span class="n">Bed</span><span class="p">(</span><span class="n">input_bed_file</span><span class="o">.</span><span class="n">bed</span><span class="p">,</span> <span class="n">overlap_method</span><span class="o">=</span><span class="s1">&#39;in_promoter&#39;</span><span class="p">,</span>
+                   <span class="n">output_bed_file</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;selected_peaks/filename.bed&#39;</span><span class="p">)</span>
+<span class="c1"># This is orgamism specific see scibiomart for more details</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">set_annotation_using_biomart</span><span class="p">(</span><span class="s1">&#39;ENSEMBL_MART_ENSEMBL&#39;</span><span class="p">,</span> <span class="s1">&#39;hsapiens_gene_ensembl&#39;</span><span class="p">)</span>
+<span class="c1"># Save the annotation so next time you don&#39;t have to do this</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">save_annotation</span><span class="p">(</span><span class="n">path_to_file</span> <span class="o">+</span> <span class="s1">&#39;hg38&#39;</span><span class="p">)</span>
+<span class="c1"># bed.set_annotation_from_file(filename) --&gt; if you have already run the previous line </span>
+
+<span class="c1"># Now we can annotate the bed file to the genes</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">assign_locations_to_genes</span><span class="p">()</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">save_loc_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;path_to_save_to/filename.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The above code snippet will annotate peaks to genes if they fall in the promoter region. It will output a csv file
+and also the selected peaks as a bed file.</p>
+<p>If you only want the largest peak to be assigned to a gene, you can use pandas to filter the CSV to groupby the gene
+name and take the max value.</p>
+</div>
+<div class="section" id="example-bed-output">
+<h3>Example Bed output<a class="headerlink" href="#example-bed-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">peak_idx</span><span class="p">,</span><span class="nb">chr</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">gene_idx</span><span class="p">,</span><span class="n">padj</span><span class="p">,</span><span class="n">signal</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="nb">id</span>
+<span class="mi">3</span><span class="p">,</span><span class="n">chr1</span><span class="p">,</span><span class="mi">3649114</span><span class="p">,</span><span class="mi">3649487</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">3.02989</span><span class="p">,</span><span class="mf">3.1721</span><span class="p">,</span><span class="mi">373</span><span class="p">,</span><span class="n">Gm19938</span>
+<span class="mi">3</span><span class="p">,</span><span class="n">chr1</span><span class="p">,</span><span class="mi">3649114</span><span class="p">,</span><span class="mi">3649487</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mf">3.02989</span><span class="p">,</span><span class="mf">3.1721</span><span class="p">,</span><span class="mi">373</span><span class="p">,</span><span class="n">Xkr4</span>
+<span class="mi">4</span><span class="p">,</span><span class="n">chr1</span><span class="p">,</span><span class="mi">3668534</span><span class="p">,</span><span class="mi">3668732</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mf">2.46958</span><span class="p">,</span><span class="mf">3.08673</span><span class="p">,</span><span class="mi">198</span><span class="p">,</span><span class="n">Xkr4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>3) CSV<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>An example of a CSV file is the output from DMRseq. Here we want to keep track of the region ID.
+We also need to keep the stat and the pvalue. One peak may map to multiple genes
+however we leave this in there you can easily sumarise this using R or Python.</p>
+<div class="section" id="example-csv-input">
+<h3>Example csv input<a class="headerlink" href="#example-csv-input" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;seqnames&quot;</span><span class="p">,</span><span class="s2">&quot;start&quot;</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">,</span><span class="s2">&quot;width&quot;</span><span class="p">,</span><span class="s2">&quot;strand&quot;</span><span class="p">,</span><span class="s2">&quot;L&quot;</span><span class="p">,</span><span class="s2">&quot;area&quot;</span><span class="p">,</span><span class="s2">&quot;beta&quot;</span><span class="p">,</span><span class="s2">&quot;stat&quot;</span><span class="p">,</span><span class="s2">&quot;pval&quot;</span><span class="p">,</span><span class="s2">&quot;qval&quot;</span><span class="p">,</span><span class="s2">&quot;index.start&quot;</span><span class="p">,</span><span class="s2">&quot;index.end&quot;</span><span class="p">,</span><span class="s2">&quot;index.width&quot;</span>
+<span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;16&quot;</span><span class="p">,</span><span class="mi">8855737</span><span class="p">,</span><span class="mi">8856501</span><span class="p">,</span><span class="mi">765</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mf">2.9</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">3303</span><span class="p">,</span><span class="mi">3303</span><span class="p">,</span><span class="mi">39</span>
+<span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="mi">11430660</span><span class="p">,</span><span class="mi">11430937</span><span class="p">,</span><span class="mi">278</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">102</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="mi">2284</span><span class="p">,</span><span class="mi">2284</span><span class="p">,</span><span class="mi">22</span>
+<span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;19&quot;</span><span class="p">,</span><span class="mi">1872607</span><span class="p">,</span><span class="mi">1872632</span><span class="p">,</span><span class="mi">266</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mf">2.3</span><span class="p">,</span><span class="mi">59</span><span class="p">,</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">3766</span><span class="p">,</span><span class="mi">3766</span><span class="p">,</span><span class="mi">15</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csv-usage">
+<h3>CSV usage<a class="headerlink" href="#csv-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scie2g.csv</span> <span class="kn">import</span> <span class="n">CSV</span>
+<span class="c1"># seqnames = column name for chr</span>
+<span class="c1"># start = column name for start</span>
+<span class="c1"># end = column name for end</span>
+<span class="c1"># stat = column name for value</span>
+<span class="c1"># [] = the list contains extra features we want in the output</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">Csv</span><span class="p">(</span><span class="s1">&#39;csv_filename&#39;</span><span class="p">,</span>  <span class="s1">&#39;seqnames&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;stat&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;index.start&#39;</span><span class="p">,</span> <span class="s1">&#39;index.end&#39;</span><span class="p">,</span> <span class="s1">&#39;qval&#39;</span><span class="p">])</span>
+<span class="c1"># Add the gene annot</span>
+<span class="n">f</span><span class="o">.</span><span class="n">set_annotation_from_file</span><span class="p">(</span><span class="s1">&#39;annotation_file_name&#39;</span><span class="p">)</span>
+<span class="c1"># Now we can run the assign values</span>
+<span class="n">f</span><span class="o">.</span><span class="n">assign_locations_to_genes</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">save_loc_to_csv</span><span class="p">(</span><span class="n">output_filename</span><span class="p">)</span>
+<span class="c1"># Save as bed for viewing in IGV --&gt; loc_df contains the dataframe with the locations</span>
+<span class="n">f</span><span class="o">.</span><span class="n">convert_to_bed</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">loc_df</span><span class="p">,</span> <span class="s1">&#39;output_bedfilename&#39;</span><span class="p">,</span> <span class="s1">&#39;tracklabel&#39;</span><span class="p">,</span> <span class="s1">&#39;qval&#39;</span><span class="p">,</span> <span class="s1">&#39;external_gene_name&#39;</span><span class="p">)</span> <span class="c1"># Uses the gene name to annotate the peak</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-csv-output">
+<h3>Example CSV output<a class="headerlink" href="#example-csv-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">region_idx</span><span class="p">,</span><span class="nb">chr</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">,</span><span class="n">gene_idx</span><span class="p">,</span><span class="n">padj</span><span class="p">,</span><span class="n">stat</span><span class="p">,</span><span class="n">num_cpgs</span><span class="p">,</span><span class="n">ensembl_gene_id</span><span class="p">,</span><span class="n">external_gene_name</span><span class="p">,</span><span class="n">chromosome_name</span><span class="p">,</span><span class="n">start_position</span><span class="p">,</span><span class="n">end_position</span><span class="p">,</span><span class="n">strand</span>
+<span class="mi">1</span><span class="p">,</span><span class="n">chr16</span><span class="p">,</span><span class="mi">8855737</span><span class="p">,</span><span class="mi">8856501</span><span class="p">,</span><span class="mi">20576</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">39.0</span><span class="p">,</span><span class="mf">40.0</span><span class="p">,</span><span class="n">ENSG00000260276</span><span class="p">,</span><span class="n">AC022167</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span><span class="n">chr16</span><span class="p">,</span><span class="mi">8848105</span><span class="p">,</span><span class="mi">8860456</span><span class="p">,</span><span class="mi">1</span>
+<span class="mi">1</span><span class="p">,</span><span class="n">chr16</span><span class="p">,</span><span class="mi">8855737</span><span class="p">,</span><span class="mi">8856501</span><span class="p">,</span><span class="mi">20579</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">39.0</span><span class="p">,</span><span class="mf">40.0</span><span class="p">,</span><span class="n">ENSG00000153048</span><span class="p">,</span><span class="n">CARHSP1</span><span class="p">,</span><span class="n">chr16</span><span class="p">,</span><span class="mi">8852942</span><span class="p">,</span><span class="mi">8869012</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+<span class="mi">3</span><span class="p">,</span><span class="n">chr19</span><span class="p">,</span><span class="mi">1872607</span><span class="p">,</span><span class="mi">1872632</span><span class="p">,</span><span class="mi">27126</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">15.0</span><span class="p">,</span><span class="mf">59.0</span><span class="p">,</span><span class="n">ENSG00000267232</span><span class="p">,</span><span class="n">AC012615</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="n">chr19</span><span class="p">,</span><span class="mi">1875016</span><span class="p">,</span><span class="mi">1875992</span><span class="p">,</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="multiprocessing">
+<h2>Multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h2>
+<p>Here is an example using the python multiprocessing functions, we imagine that there is a list of files that you want
+to process</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scie2g.bed</span> <span class="kn">import</span> <span class="n">Bed</span>
+
+<span class="kn">from</span> <span class="nn">multiprocessing.dummy</span> <span class="kn">import</span> <span class="n">Pool</span> <span class="k">as</span> <span class="n">ThreadPool</span>
+
+<span class="k">def</span> <span class="nf">run_bed</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+     <span class="k">try</span><span class="p">:</span>
+         <span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;directory containing bed files&#39;</span>
+         <span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;directory for output&#39;</span>
+         <span class="n">bed</span> <span class="o">=</span> <span class="n">Bed</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">overlap_method</span><span class="o">=</span><span class="s1">&#39;in_promoter&#39;</span><span class="p">,</span>
+                   <span class="n">output_bed_file</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;selected_peaks/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+         <span class="c1"># Use your annotation file i.e. for humans or mouse</span>
+         <span class="n">bed</span><span class="o">.</span><span class="n">set_annotation_from_file</span><span class="p">(</span><span class="s1">&#39;supps/entrez-mmusculus_gene_ensembl-GRCm38.p6&#39;</span><span class="p">)</span>
+         <span class="c1"># Now we can run the assign values</span>
+         <span class="n">bed</span><span class="o">.</span><span class="n">assign_locations_to_genes</span><span class="p">()</span>
+         <span class="n">bed</span><span class="o">.</span><span class="n">save_loc_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}{</span><span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">csv&#39;</span><span class="p">,</span>  <span class="n">keep_unassigned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+     <span class="k">except</span><span class="p">:</span>
+         <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="n">files_to_process</span> <span class="o">=</span> <span class="p">[</span><span class="n">file1</span><span class="p">,</span> <span class="n">file2</span><span class="p">,</span> <span class="n">file</span><span class="o">...</span><span class="p">]</span>
+
+<span class="c1"># Run in paralell</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPool</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">run_bed</span><span class="p">,</span> <span class="n">files_to_process</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="notebook.html" class="btn btn-neutral float-right" title="Notebook" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../installing/index.html" class="btn btn-neutral float-left" title="Installing sci-epi2gene" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ariane Mora
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

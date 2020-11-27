@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Notebook &mdash; scie2g 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/custom.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CLI" href="cli.html" />
+    <link rel="prev" title="Examples" href="examples.html" />
+ 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">sci-epi2gene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing/index.html">Installing sci-epi2gene</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Running sci-epi2gene</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Notebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Example-annotating-mouse-and-human-peaks-to-genes">Example annotating mouse and human peaks to genes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Inspect-files">Inspect files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Run-bed-file-annotation">Run bed file annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Inspect-the-output-of-the-annotation">Inspect the output of the annotation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Override-the-default-parameters">Override the default parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-with-CSV-file">Example with CSV file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Annotate-genes-to-the-CSV-file">Annotate genes to the CSV file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Print-out-the-bed-results-and-the">Print out the bed results and the</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Change log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scie2g</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../about.html">sci-epi2gene</a> &raquo;</li>
+        
+      <li>Notebook</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/arianemora/sciepi2gene/blob/master/docs_src/src/examples/notebook.ipynb" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Notebook">
+<h1>Notebook<a class="headerlink" href="#Notebook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Example-annotating-mouse-and-human-peaks-to-genes">
+<h2>Example annotating mouse and human peaks to genes<a class="headerlink" href="#Example-annotating-mouse-and-human-peaks-to-genes" title="Permalink to this headline">¶</a></h2>
+<p>This notebook provides key examples to get started:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">)</span> <span class="n">Annotating</span> <span class="n">peaks</span> <span class="kn">from</span> <span class="nn">bed</span> <span class="n">files</span> <span class="n">to</span> <span class="n">genes</span> <span class="p">(</span><span class="n">mouse</span><span class="p">)</span>
+<span class="mi">3</span><span class="p">)</span> <span class="n">Annotating</span> <span class="n">DNA</span> <span class="n">methylation</span> <span class="n">data</span> <span class="n">to</span> <span class="n">genes</span> <span class="p">(</span><span class="n">human</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The data used in this example can be found here: <a class="reference external" href="https://github.com/ArianeMora/sciepi2gene/tree/main/tests/data">https://github.com/ArianeMora/sciepi2gene/tree/main/tests/data</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scie2g</span> <span class="kn">import</span> <span class="n">Bed</span><span class="p">,</span> <span class="n">Csv</span>
+<span class="kn">from</span> <span class="nn">sciutil</span> <span class="kn">import</span> <span class="n">SciUtil</span>
+<span class="kn">import</span> <span class="nn">igv</span>
+
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s1">&#39;../tests/data/&#39;</span>
+<span class="n">bed_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">test_H3K27ac.bed&#39;</span>
+<span class="n">mm10_annot_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">mmusculus_gene_ensembl-GRCm38.p6.csv&#39;</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">SciUtil</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Inspect-files">
+<h2>Inspect files<a class="headerlink" href="#Inspect-files" title="Permalink to this headline">¶</a></h2>
+<p>Just to give you an idea of what the files as input are we print out the head of the <em>annotation</em> file and the <em>bed</em> file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">u</span><span class="o">.</span><span class="n">dp</span><span class="p">([</span><span class="s1">&#39;MM10 Bed file header:&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">bed_file</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">))</span>
+
+<span class="n">u</span><span class="o">.</span><span class="n">dp</span><span class="p">([</span><span class="s1">&#39;MM10 annotation file header:&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">mm10_annot_file</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-blue-intense-fg">                             MM10 Bed file header:                                </span>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+    chr1   13139105   13374083  Peak_147937  12  .  2.20467  3.65974  2.03542  \
+0   chr4  118442415  118457513  Peak_126956  13  .  2.16107  4.38555  2.71094
+1  chr15  102326116  102331873   Peak_43115  20  .  3.35950  9.21174  7.28157
+2   chrX   73716597   73738534   Peak_76892  15  .  2.65320  6.01850  4.22238
+
+   131     Ncoa2
+0    120     Mpl
+1  147     Pfdn5
+2  122     Abcd1
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-blue-intense-fg">                         MM10 annotation file header:                                  </span>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+          ensembl_gene_id external_gene_name chromosome_name  start_position  \
+0      ENSMUSG00000102693      4933401J01Rik               1         3073253
+1      ENSMUSG00000064842            Gm26206               1         3102016
+2      ENSMUSG00000102851            Gm18956               1         3252757
+3      ENSMUSG00000103377            Gm37180               1         3365731
+4      ENSMUSG00000104017            Gm37363               1         3375556
+...                   ...                ...             ...             ...
+56300  ENSMUSG00000095134           Mid1-ps1               Y        90753057
+56301  ENSMUSG00000095366            Gm21860               Y        90752427
+56302  ENSMUSG00000096768            Gm47283               Y        90784738
+56303  ENSMUSG00000099871            Gm21742               Y        90837413
+56304  ENSMUSG00000096850            Gm21748               Y        90838869
+
+       end_position  strand
+0           3074322       1
+1           3102125       1
+2           3253236       1
+3           3368549      -1
+4           3377788      -1
+...             ...     ...
+56300      90763485       1
+56301      90755467      -1
+56302      90816465       1
+56303      90844040       1
+56304      90839177      -1
+
+[56305 rows x 6 columns]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Run-bed-file-annotation">
+<h2>Run bed file annotation<a class="headerlink" href="#Run-bed-file-annotation" title="Permalink to this headline">¶</a></h2>
+<p>Now we can annotate the bed file to the genes in the annotation file (using the default parameters).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bed</span> <span class="o">=</span> <span class="n">Bed</span><span class="p">(</span><span class="n">bed_file</span><span class="p">)</span>
+<span class="c1"># Add the gene annot</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">set_annotation_from_file</span><span class="p">(</span><span class="n">mm10_annot_file</span><span class="p">)</span>
+<span class="c1"># Now we can run the assign values</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">assign_locations_to_genes</span><span class="p">()</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">save_loc_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;test_bed_h3k27ac_output.csv&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+4it [00:00, 53.30it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-yellow-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-yellow-intense-fg">Warning: Your input file used different chr conventions to ensembl: chr1 vs 1
+We have added chr prefix to the ensembl chrs.
+file: ../tests/data/test_H3K27ac.bed    </span>
+<span class="ansi-yellow-intense-fg">--------------------------------------------------------------------------------</span>
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Inspect-the-output-of-the-annotation">
+<h2>Inspect the output of the annotation<a class="headerlink" href="#Inspect-the-output-of-the-annotation" title="Permalink to this headline">¶</a></h2>
+<p>Look at the previous annotation to check the annotations are correct.</p>
+<p>You’ll notice that many of the peaks have been annotated to multiple genes, in particular, since the annotation file has ensembl IDs, we get multiple assignments to a single gene name.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">u</span><span class="o">.</span><span class="n">dp</span><span class="p">([</span><span class="s1">&#39;Parsed bed and annotated it:&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test_bed_h3k27ac_output.csv&#39;</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-blue-intense-fg">                         Parsed bed and annotated it:                                  </span>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+    peak_idx  gene_idx    chr      start        end  peak_value        8  \
+0          0       157   chr1   13139105   13374083     2.20467  2.03542
+1          0       158   chr1   13139105   13374083     2.20467  2.03542
+2          0       159   chr1   13139105   13374083     2.20467  2.03542
+3          0       160   chr1   13139105   13374083     2.20467  2.03542
+4          0       161   chr1   13139105   13374083     2.20467  2.03542
+5          0       162   chr1   13139105   13374083     2.20467  2.03542
+6          0       163   chr1   13139105   13374083     2.20467  2.03542
+7          0       164   chr1   13139105   13374083     2.20467  2.03542
+8          0       165   chr1   13139105   13374083     2.20467  2.03542
+9          0       166   chr1   13139105   13374083     2.20467  2.03542
+10         1     33541   chr4  118442415  118457513     2.16107  2.71094
+11         1     33542   chr4  118442415  118457513     2.16107  2.71094
+12         2     18356  chr15  102326116  102331873     3.35950  7.28157
+13         2     18357  chr15  102326116  102331873     3.35950  7.28157
+14         3     53203   chrX   73716597   73738534     2.65320  4.22238
+15         3     53204   chrX   73716597   73738534     2.65320  4.22238
+
+                  9     ensembl_gene_id external_gene_name chromosome_name  \
+0   131     Ncoa2\n  ENSMUSG00000103506            Gm38376            chr1
+1   131     Ncoa2\n  ENSMUSG00000103495            Gm37409            chr1
+2   131     Ncoa2\n  ENSMUSG00000099183            Gm27881            chr1
+3   131     Ncoa2\n  ENSMUSG00000102639            Gm38223            chr1
+4   131     Ncoa2\n  ENSMUSG00000104170            Gm37702            chr1
+5   131     Ncoa2\n  ENSMUSG00000087782            Gm23169            chr1
+6   131     Ncoa2\n  ENSMUSG00000103085            Gm38120            chr1
+7   131     Ncoa2\n  ENSMUSG00000102664            Gm38380            chr1
+8   131     Ncoa2\n  ENSMUSG00000005886              Ncoa2            chr1
+9   131     Ncoa2\n  ENSMUSG00000101476            Gm29570            chr1
+10    120     Mpl\n  ENSMUSG00000081921            Gm12858            chr4
+11    120     Mpl\n  ENSMUSG00000006389                Mpl            chr4
+12  147     Pfdn5\n  ENSMUSG00000001289              Pfdn5           chr15
+13  147     Pfdn5\n  ENSMUSG00000001285               Myg1           chr15
+14  122     Abcd1\n  ENSMUSG00000002015             Bcap31            chrX
+15  122     Abcd1\n  ENSMUSG00000031378              Abcd1            chrX
+
+    start_position  end_position  strand
+0         13177462      13179714      -1
+1         13234809      13236434      -1
+2         13262198      13262279       1
+3         13289812      13290506      -1
+4         13297036      13298907      -1
+5         13334498      13334609      -1
+6         13343563      13348204      -1
+7         13354483      13356730      -1
+8         13139105      13374083      -1
+9         13376070      13388413       1
+10       118441013     118441220      -1
+11       118442415     118457513      -1
+12       102326116     102331873       1
+13       102331709     102338139       1
+14        73686178      73716175      -1
+15        73716597      73738534       1
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Override-the-default-parameters">
+<h2>Override the default parameters<a class="headerlink" href="#Override-the-default-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Here we just show how some of the parameters can be overrided.</p>
+<p>Here rather than using the peak signal, we choose the peak score (maybe we want it for visualisation purposes). We also add the “Peak” (feature 9, to our output file). We do this by changing: <code class="docutils literal notranslate"><span class="pre">peak_value=4</span></code> (see the features below for the narrow peak format).</p>
+<p>In order to just add extra information, we do this by adding to the <code class="docutils literal notranslate"><span class="pre">hdridx</span></code> and set it to be: <code class="docutils literal notranslate"><span class="pre">hdridx='&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;8&quot;,&quot;9&quot;'</span></code>. Basically this means: in the output you’ll have: <code class="docutils literal notranslate"><span class="pre">chrom,</span> <span class="pre">chromStart,chromEnd,name,score,signalValue,qvalue</span></code>.</p>
+<p>Other things we change are the <code class="docutils literal notranslate"><span class="pre">buffer_before_tss</span></code> (the buffer before the TSS in which we want to annotate the peak to the gene) and <code class="docutils literal notranslate"><span class="pre">buffer_after_tss</span></code> (i.e. the amount downstream of the gene end - soz this is poorly named).</p>
+<p>We take the information from the genome browser FAQ: <a class="reference external" href="https://genome.ucsc.edu/FAQ/FAQformat.html#format12">https://genome.ucsc.edu/FAQ/FAQformat.html#format12</a></p>
+<ol class="arabic simple" start="0">
+<li><p>chrom - Name of the chromosome (or contig, scaffold, etc.).</p></li>
+<li><p>chromStart - The starting position of the feature in the chromosome or scaffold. The first base in a chromosome is numbered 0.</p></li>
+<li><p>chromEnd - The ending position of the feature in the chromosome or scaffold. The chromEnd base is not included in the display of the feature. For example, the first 100 bases of a chromosome are defined as chromStart=0, chromEnd=100, and span the bases numbered 0-99.</p></li>
+<li><p>name - Name given to a region (preferably unique). Use “.” if no name is assigned.</p></li>
+<li><p>score - Indicates how dark the peak will be displayed in the browser (0-1000). If all scores were “‘0”’ when the data were submitted to the DCC, the DCC assigned scores 1-1000 based on signal value. Ideally the average signalValue per base spread is between 100-1000.</p></li>
+<li><p>strand - +/- to denote strand or orientation (whenever applicable). Use “.” if no orientation is assigned.</p></li>
+<li><p>signalValue - Measurement of overall (usually, average) enrichment for the region.</p></li>
+<li><p>pValue - Measurement of statistical significance (-log10). Use -1 if no pValue is assigned.</p></li>
+<li><p>qValue - Measurement of statistical significance using false discovery rate (-log10). Use -1 if no qValue is assigned.</p></li>
+<li><p>peak - Point-source called for this peak; 0-based offset from chromStart. Use -1 if no point-source called.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bed</span> <span class="o">=</span> <span class="n">Bed</span><span class="p">(</span><span class="n">bed_file</span><span class="p">,</span> <span class="n">overlap_method</span><span class="o">=</span><span class="s1">&#39;overlaps&#39;</span><span class="p">,</span> <span class="n">buffer_after_tss</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                  <span class="n">buffer_before_tss</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">buffer_gene_overlap</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                  <span class="n">gene_start</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">gene_end</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">gene_chr</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                  <span class="n">gene_direction</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">gene_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                  <span class="n">chr_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">start_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">end_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">peak_value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">header_extra</span><span class="o">=</span><span class="s1">&#39;&quot;7&quot;&#39;</span><span class="p">)</span>
+<span class="c1"># Add the gene annot</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">set_annotation_from_file</span><span class="p">(</span><span class="n">mm10_annot_file</span><span class="p">)</span>
+<span class="c1"># Now we can run the assign values</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">assign_locations_to_genes</span><span class="p">()</span>
+<span class="n">bed</span><span class="o">.</span><span class="n">save_loc_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;bed_h3k27ac_output_overlaps.csv&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+4it [00:00, 59.27it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-yellow-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-yellow-intense-fg">Warning: Your input file used different chr conventions to ensembl: chr1 vs 1
+We have added chr prefix to the ensembl chrs.
+file: ../tests/data/test_H3K27ac.bed    </span>
+<span class="ansi-yellow-intense-fg">--------------------------------------------------------------------------------</span>
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Example-with-CSV-file">
+<h2>Example with CSV file<a class="headerlink" href="#Example-with-CSV-file" title="Permalink to this headline">¶</a></h2>
+<p>With the CSV file, we allow for the header to be used (since unlike the bed files we read the whole file into memory). The good thing about the beds is that we only read one line at a time, so it will be able to handle much larger files.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">csv_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">test_methyl_overlaps.csv&#39;</span>
+<span class="n">hg38_annot_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">hsapiens_gene_ensembl-GRCh38.p13.csv&#39;</span>
+
+<span class="c1"># Print out the files again like we did above</span>
+<span class="n">u</span><span class="o">.</span><span class="n">dp</span><span class="p">([</span><span class="s1">&#39;Human CSV file header:&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">))</span>
+
+<span class="n">u</span><span class="o">.</span><span class="n">dp</span><span class="p">([</span><span class="s1">&#39;Human annotation file header:&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">hg38_annot_file</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-blue-intense-fg">                            Human CSV file header:                                </span>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+   Unnamed: 0  chr     start       end strand  pvalue  qvalue  meth.diff  \
+0           1    7  27070640  27072751      *  0.0005   0.005       -1.0
+1           2    7  27082673  27109403      *  0.0005   0.005       -1.0
+2           3    7  27095203  27096872      *  0.0005   0.005       -1.0
+3           4    7  27095403  27096072      *  0.0005   0.005       -1.0
+4           5    7  27095403  27095404      *  0.0005   0.005       -1.0
+
+                              description                 genes
+0                           Overlaps None                   NaN
+1  Overlaps Hoxa1 and HotairM1 in TSS ALL  HOTAIRM1,HOXA1,HOXA2
+2    Overlaps Hoxa1 and HotairM1 in TSS A        HOTAIRM1,HOXA1
+3    Overlaps Hoxa1 and HotairM1 in TSS B        HOTAIRM1,HOXA1
+4    Overlaps Hoxa1 and HotairM1 in TSS C        HOTAIRM1,HOXA1
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-blue-intense-fg">                         Human annotation file header:                                </span>
+<span class="ansi-blue-intense-fg">--------------------------------------------------------------------------------</span>
+       ensembl_gene_id external_gene_name chromosome_name  start_position  \
+0      ENSG00000223972            DDX11L1               1           11869
+1      ENSG00000278267          MIR6859-1               1           17369
+2      ENSG00000243485        MIR1302-2HG               1           29554
+3      ENSG00000227232             WASH7P               1           14404
+4      ENSG00000284332          MIR1302-2               1           30366
+...                ...                ...             ...             ...
+67125  ENSG00000224240            CYCSP49               Y        26549425
+67126  ENSG00000227629         SLC25A15P1               Y        26586642
+67127  ENSG00000231514             CCNQP2               Y        26626520
+67128  ENSG00000237917            PARP4P1               Y        26594851
+67129  ENSG00000235857            CTBP2P1               Y        56855244
+
+       end_position  strand
+0             14409       1
+1             17436      -1
+2             31109       1
+3             29570      -1
+4             30503       1
+...             ...     ...
+67125      26549743       1
+67126      26591601      -1
+67127      26627159      -1
+67128      26634652      -1
+67129      56855488       1
+
+[67130 rows x 6 columns]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Annotate-genes-to-the-CSV-file">
+<h2>Annotate genes to the CSV file<a class="headerlink" href="#Annotate-genes-to-the-CSV-file" title="Permalink to this headline">¶</a></h2>
+<p>Here we show an example of annotating to a csv file. We also show how we can convert a CSV to a bed file both before and after the annotation. This allows us to be able to view the results of the CSV file.</p>
+<ol class="arabic simple">
+<li><p>Convert the CSV input file to a bed so we can view it in IGV</p></li>
+<li><p>Annotate the features to genes</p></li>
+<li><p>Save csv to a bed file</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">csv_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s1">test_methyl_overlaps.csv&#39;</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">Csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="n">chr_str</span><span class="o">=</span><span class="s1">&#39;chr&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;meth.diff&#39;</span><span class="p">,</span>
+        <span class="n">header_extra</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pvalue&#39;</span><span class="p">,</span> <span class="s1">&#39;qvalue&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;genes&#39;</span><span class="p">])</span>
+
+<span class="c1"># Convert to bed:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">output filename = test_methyl_overlaps_input</span>
+<span class="sd">track name = MethylOutputOverlaps_input</span>
+<span class="sd">value = qvalue</span>
+<span class="sd">name of peak = genes (a column in the csv file)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">f</span><span class="o">.</span><span class="n">convert_to_bed</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;test_methyl_overlaps_input.bed&#39;</span><span class="p">,</span> <span class="s1">&#39;Methyl_input&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;qvalue&#39;</span><span class="p">,</span> <span class="s1">&#39;genes&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">set_annotation_from_file</span><span class="p">(</span><span class="n">hg38_annot_file</span><span class="p">)</span>
+
+<span class="c1"># Now we can run the assign values</span>
+<span class="n">f</span><span class="o">.</span><span class="n">assign_locations_to_genes</span><span class="p">()</span>
+
+<span class="c1"># Save the output to a csv file</span>
+<span class="n">f</span><span class="o">.</span><span class="n">save_loc_to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;test_methyl_overlaps_output.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># We now save the annotated peaks to another bed file so we can inspect the differences.</span>
+<span class="n">f</span><span class="o">.</span><span class="n">convert_to_bed</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">loc_df</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;test_methyl_overlaps_output.bed&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylOutputOverlaps&#39;</span><span class="p">,</span> <span class="s1">&#39;qvalue&#39;</span><span class="p">,</span> <span class="s1">&#39;external_gene_name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+100%|██████████| 5/5 [00:00&lt;00:00, 262.75it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-yellow-intense-fg">--------------------------------------------------------------------------------</span>
+<span class="ansi-yellow-intense-fg">Warning: Your input file used different chr conventions to ensembl: chr7 vs 1
+We have added chr prefix to the ensembl chrs.
+file: ../tests/data/test_methyl_overlaps.csv    </span>
+<span class="ansi-yellow-intense-fg">--------------------------------------------------------------------------------</span>
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Print-out-the-bed-results-and-the">
+<h2>Print out the bed results and the<a class="headerlink" href="#Print-out-the-bed-results-and-the" title="Permalink to this headline">¶</a></h2>
+<p>If you want to use this section you need to install IGV’s browser capabilities in your virtual environment.</p>
+<p>You do this the following way (as per documentation at: <a class="reference external" href="https://github.com/igvteam/igv-jupyter">https://github.com/igvteam/igv-jupyter</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># To install to configuration in your home directory</span>
+<span class="n">jupyter</span> <span class="n">serverextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">igv</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="o">--</span><span class="n">py</span> <span class="n">igv</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">igv</span>
+
+
+<span class="c1"># If using a virtual environment</span>
+<span class="n">jupyter</span> <span class="n">serverextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">igv</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="o">--</span><span class="n">py</span> <span class="n">igv</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">igv</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">igv</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">igv</span><span class="o">.</span><span class="n">Browser</span><span class="p">({</span><span class="s2">&quot;genome&quot;</span><span class="p">:</span> <span class="s2">&quot;hg38&quot;</span><span class="p">})</span>
+<span class="n">b</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Load input track (in purple)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">load_track</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Local Bed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;files/test_methyl_overlaps_input.bed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;bed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;annotation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;displayMode&quot;</span><span class="p">:</span> <span class="s2">&quot;EXPANDED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#8258A1&quot;</span>
+    <span class="p">})</span>
+
+<span class="c1"># Load output track (in green)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">load_track</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Local Bed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;files/test_methyl_overlaps_output.bed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;bed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;annotation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;indexed&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;displayMode&quot;</span><span class="p">:</span> <span class="s2">&quot;EXPANDED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#8DD9B3&quot;</span>
+    <span class="p">})</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;HOXA2&#39;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">get_svg</span><span class="p">()</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">display_svg</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div id="igv_4483959"></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;Awaiting SVG - try again in a few seconds&#39;
+</pre></div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cli.html" class="btn btn-neutral float-right" title="CLI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ariane Mora
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
