@@ -2,20 +2,20 @@
 [![codecov.io](https://codecov.io/github/ArianeMora/sciepi2gene/coverage.svg?branch=master)](https://codecov.io/github/ArianeMora/sciepi2gene?branch=master)
 [![PyPI](https://img.shields.io/pypi/v/sciepi2gene)](https://pypi.org/project/sciepi2gene/)
 
-
+[Link to docs](https://arianemora.github.io/sciepi2gene/)
 
 Sci-epi2gene maps events annotated to a genome location to nearby genes - i.e. peaks from histone modification data
 ChIP-seq experiemnts stored as bed data, or DNA methylation data in csv format (e.g. output from DMRseq, methylKit or methylSig).
 
 The user provides a SORTED gene annotation file with start, end, and direction for each gene (we recommend using
-[sci-biomart](https://github.com/ArianeMora/scibiomart), see examples for detail.  
+[sci-biomart](https://github.com/ArianeMora/scibiomart), see examples for detail.
 
 The user then selects how to annotate, i.e. whether it is in the promoter region, or overlaps the gene body. Finally,
 the parameters for overlap on each side are chosen.
 
 It is available under the [GNU General Public License (Version 3) ](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
-This package is a wrapper that allows various epigenetic data types to be annotated to genes.
+This package is a wrapper that allows various epigenetic data types to be annotated to genes. [Examples are in the docs](https://arianemora.github.io/sciepi2gene/)
 
 I also wanted to have different upper flanking and lower flanking distances that took into account the directionality of the strand
 and also an easy output csv file that can be filtered and used in downstream analyses. This is why I keep all features
