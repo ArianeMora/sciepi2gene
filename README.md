@@ -1,6 +1,7 @@
 # sci-Epi2Gene
 [![codecov.io](https://codecov.io/github/ArianeMora/sciepi2gene/coverage.svg?branch=master)](https://codecov.io/github/ArianeMora/sciepi2gene?branch=master)
-[![PyPI](https://img.shields.io/pypi/v/sciepi2gene)](https://pypi.org/project/sciepi2gene/)
+[![PyPI](https://img.shields.io/pypi/v/scie2g)](https://pypi.org/project/scie2g/)
+[![DOI](https://zenodo.org/badge/316410924.svg)](https://zenodo.org/badge/latestdoi/316410924)
 
 [Link to docs](https://arianemora.github.io/sciepi2gene/)
 
