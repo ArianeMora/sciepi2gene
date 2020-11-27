@@ -17,9 +17,6 @@ It is available under the `GNU General Public License (Version 3) <https://www.g
 
 This package is a wrapper that allows various epigenetic data types to be annoatated to genes.
 
-I found that the Granges package annotated a peak to a gene (but not any other genes it may overlap) plus its in R
-so enough said.
-
 I also wanted to have different upper flanking and lower flanking distances that took into account the directionality of the strand
 and also an easy output csv file that can be filtered and used in downstream analyses. This is why I keep all features
 that fall within the annotation region of a gene (example below):
@@ -29,6 +26,8 @@ The overlapping methods are as follows:
     2) promoter: does ANY part of the peak/feature overlap with the TSS of the gene taking into account buffers on either side of the TSS.
 
 .. figure:: _static/example_overlaps.png
+   :width: 800
+   :align: center
 
 As you can see from the above screenshot using IGV, the input peaks are in purple, and the green are the output
 peaks as annotated to genes. The function *convert_to_bed* converts the output csv to bed files for viewing. This example
@@ -39,6 +38,8 @@ We show this example in the :ref:`notebook <examples/notebook>`, where we use `I
 to view the tracks (see image below).
 
 .. figure:: _static/igv_jupyter.png
+   :width: 800
+   :align: center
 
 Lastly, there are sometimes differences between annotations (i.e. the TSS on your annotation in IGV may differ to the
 annotation you input to sciepi2gene), naturally, how your genes/features are annotated depends on the input file so if you see differences check this first!

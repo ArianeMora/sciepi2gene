@@ -29,7 +29,8 @@ The overlapping methods are as follows:
     1) overlaps: this means does ANY part of the peak/feature overlap the gene body + some buffer before the TSS and some buffer on the non-TSS side
     2) promoter: does ANY part of the peak/feature overlap with the TSS of the gene taking into account buffers on either side of the TSS.
 
-.. figure:: _static/example_overlaps.png
+.. image:: _static/example_overlaps.png
+   :width: 600
 
 As you can see from the above screenshot using IGV, the input peaks are in purple, and the green are the output
 peaks as annotated to genes. The function *convert_to_bed* converts the output csv to bed files for viewing. This example
@@ -39,8 +40,9 @@ the first peak) are dropped from the output.
 We show this example in the notebook (see examples folder), where we use [IGV](https://github.com/igvteam/igv-jupyter#igvjs-jupyter-extension)
 to view the tracks (see image below).
 
-.. figure:: _static/igv_jupyter.png
-
+.. image:: _static/igv_jupyter.png
+   :width: 600
+   
 Lastly, there are sometimes differences between annotations (i.e. the TSS on your annotation in IGV may differ to the
 annotation you input to sciepi2gene), naturally, how your genes/features are annotated depends on the input file so if you see differences check this first!
 
