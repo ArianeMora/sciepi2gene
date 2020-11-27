@@ -1,0 +1,4 @@
+idx,seqnames,start,end,gene_idx,stat,index.start,index.end,qval,ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand
+1,chr16,8855737,8856501,20576,40,3303,3309,0.01,ENSG00000260276,AC022167.2,chr16,8848105,8860456,1
+1,chr16,8855737,8856501,20579,40,3303,3309,0.01,ENSG00000153048,CARHSP1,chr16,8852942,8869012,-1
+2,chr19,1872607,1872632,27126,59,3766,3768,0.01,ENSG00000267232,AC012615.5,chr19,1875016,1875992,1
