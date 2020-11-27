@@ -225,16 +225,14 @@ wget https://github.com/ArianeMora/sciepi2gene/data/mmusculus_gene_ensembl-GRCm3
 </pre></div>
 </div>
 <p>Examples using scibiomart to build references:</p>
-<p><em>Human</em>
-.. code-block:: bash</p>
-<blockquote>
-<div><p>scibiomart –m ENSEMBL_MART_ENSEMBL –d hsapiens_gene_ensembl –a “ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand” –o “humanSorted” –s t</p>
-</div></blockquote>
-<p><em>Mouse</em>
-.. code-block:: bash</p>
-<blockquote>
-<div><p>scibiomart –m ENSEMBL_MART_ENSEMBL –d mmusculus_gene_ensembl –a “ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand” –o “mm10Sorted” –s t</p>
-</div></blockquote>
+<p><em>Human</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scibiomart --m ENSEMBL_MART_ENSEMBL --d hsapiens_gene_ensembl --a <span class="s2">&quot;ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand&quot;</span> --o <span class="s2">&quot;humanSorted&quot;</span> --s t
+</pre></div>
+</div>
+<p><em>Mouse</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scibiomart --m ENSEMBL_MART_ENSEMBL --d mmusculus_gene_ensembl --a <span class="s2">&quot;ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand&quot;</span> --o <span class="s2">&quot;mm10Sorted&quot;</span> --s t
+</pre></div>
+</div>
 <p>Below are supported versions of sci-epi2gene:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>

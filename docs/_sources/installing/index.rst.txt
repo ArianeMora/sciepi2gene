@@ -25,12 +25,14 @@ section which shows how to build these.
 Examples using scibiomart to build references:
 
 *Human*
+
 .. code-block:: bash
 
     scibiomart --m ENSEMBL_MART_ENSEMBL --d hsapiens_gene_ensembl --a "ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand" --o "humanSorted" --s t
 
 
 *Mouse*
+
 .. code-block:: bash
 
     scibiomart --m ENSEMBL_MART_ENSEMBL --d mmusculus_gene_ensembl --a "ensembl_gene_id,external_gene_name,chromosome_name,start_position,end_position,strand" --o "mm10Sorted" --s t
