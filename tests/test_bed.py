@@ -56,6 +56,7 @@ class TestClass(unittest.TestCase):
 
 class TestBed(TestClass):
 
+
     def test_bed(self):
         self.setup_class()
         """ Tests the generic function of the bed data """
@@ -157,3 +158,28 @@ class TestBed(TestClass):
                   end_idx=0, peak_value=4, header_extra='"0","1","2","3","6"', sep=',')
             print(context)
 
+    def test_chromhmm_bed(self):
+        self.setup_class()
+        header = "chr,start,end,label,annotation"
+        bed = Bed(os.path.join(self.data_dir, 'e16.5_forebrain_15_segments.bed'),
+                  header=None, overlap_method='in_promoter',
+                  output_bed_file=os.path.join(self.data_dir, 'e16.5_forebrain_15_segments_selectedPeaks.bed'),
+                  buffer_after_tss=0, buffer_before_tss=10, buffer_gene_overlap=0,
+                  gene_start=3, gene_end=4, gene_chr=2, gene_direction=5, gene_name=0,
+                  chr_idx=0, start_idx=1, end_idx=2, peak_value=4, header_extra="3", sep='\t'
+                  )
+        # Add the gene annot
+        bed.set_annotation_from_file(self.mm10_annot)
+        # Now we can run the assign values
+        bed.assign_locations_to_genes()
+        bed.save_loc_to_csv(f'{self.data_dir}test_e16.5_forebrain_15_segments.csv')
+
+    # def test_parallel(self):
+    #     data_dir = 'encode/sorted_bed/'
+    #     files = os.listdir(data_dir)
+    #     files_to_run = []
+    #     for filename in files:
+    #         files_to_run.append(filename)
+    #     # Run in paralell
+    #     pool = ThreadPool(12)
+    #     results = pool.map(run_bed, files_to_run)

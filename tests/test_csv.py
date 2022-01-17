@@ -96,15 +96,10 @@ class TestCsv(TestClass):
         """ This test ensures that we don't miss genes or events that overlaps with the genes """
         f = Csv(self.methyl_overlaps,  'chr', 'start', 'end', 'meth.diff', ['pvalue', 'qvalue', 'description', 'genes'])
         # Add the gene annot
-        f.convert_to_bed(pd.read_csv(self.methyl_overlaps), f'{self.data_dir}test_methyl_overlaps_input.bed',
-                         'MethylOutputOverlaps_input', 'qvalue',
-                         'genes')
         f.set_annotation_from_file(self.hg38_annot)
         # Now we can run the assign values
         f.assign_locations_to_genes()
         f.save_loc_to_csv(f'{self.data_dir}test_methyl_overlaps_output.csv')
-        f.convert_to_bed(f.loc_df, f'{self.data_dir}test_methyl_overlaps_output.bed', 'MethylOutputOverlaps', 'qvalue',
-                         'external_gene_name')
         # Read in the output and check the genes were all gotten (ommit AC00 transcripts)
         loc_df = pd.read_csv(f'{self.data_dir}test_methyl_overlaps_output.csv')
         gene_names = loc_df['genes'].values

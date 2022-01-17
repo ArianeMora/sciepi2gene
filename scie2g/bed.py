@@ -127,17 +127,15 @@ class Bed(Epi2Gene):
                     break
 
                 # Get the information for this location
-                loc_start, loc_end, loc_signal = int(line[START]),  int(line[END]), float(line[SIGNAL])
+                loc_start, loc_end, loc_signal = int(line[START]),  int(line[END]), line[SIGNAL]
                 gene_chr, gene_start, gene_end, gene_direction = self.get_current_gene_params(loc_chr, loc_start,
                                                                                               loc_end)
-                if line[3] == 'Peak_584' or line[3] == 'Peak_1158':
-                    print(line)
                 loc_width = loc_end - loc_start
                 self.cur_loc_start, self.cur_loc_end = loc_start, loc_end
                 # Create the argument object that will be used.
                 loc_args = {'peak_idx': self.cur_loc_idx, 'gene_idx': self.cur_gene_idx}
                 for h in self.hdr_idx:
-                    loc_args[self.header[len(loc_args)]] = line[int(h)].strip()  # Create the arguments based on the header
+                    loc_args[self.header[len(loc_args)]] = line[int(h)].strip()   # Create the arguments based on the header
                 loc_args['width'] = loc_width  # Add in the peak width
                 if loc_chr == gene_chr:
                     # Run loop and check if we have a gene match for this location.
