@@ -39,7 +39,7 @@ class Csv(Epi2Gene):
                  gene_direction=5, gene_name=0, sep=','
                  ):
         self.chr_str, self.start_str, self.end_str, self.value_str = chr_str, start, end, value
-        header = ['idx', "location_chr", "location_start", "location_end", 'gene_idx', value]
+        header = ['idx', self.chr_str, self.start_str, self.end_str, 'gene_idx', value]
         self.header_extra = header_extra or []
         if header_extra:
             header += header_extra
@@ -114,7 +114,7 @@ class Csv(Epi2Gene):
         return True
 
     def convert_to_bed(self, df: pd.DataFrame, filename: str, track_name: str, pvalue_str=None, name_str=None):
-        chrs, starts, ends, values = df['location_chr'].values, df['location_start'].values, df['location_end'].values, \
+        chrs, starts, ends, values = df[self.chr_str].values, df[self.start_str].values, df[self.end_str].values, \
                                                  df[self.value_str].values
         if pvalue_str:
             vals = df[pvalue_str].values
@@ -186,8 +186,8 @@ class Csv(Epi2Gene):
                                'Returning. \n Filename: \t', self.filename])
                 break
             # Add in the other header information the user has requested
-            loc_args = {'idx': loc_idx, "location_chr": loc_chr, "location_start": loc_start,
-                        "location_end": loc_end, 'gene_idx': None, self.value_str: loc_value}
+            loc_args = {'idx': loc_idx, self.chr_str: loc_chr, self.start_str: loc_start,
+                        self.end_str: loc_end, 'gene_idx': None, self.value_str: loc_value}
             for h in self.header_extra:
                 loc_args[h] = rows[loc_idx][header_idxs[h]]
 
