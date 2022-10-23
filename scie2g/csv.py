@@ -32,6 +32,7 @@ class Csv(Epi2Gene):
 
     def __init__(self, filename: str, chr_str: str, start: str, end: str, value: str, header_extra: None,
                  overlap_method='in_promoter',
+                 direction_aware=False,
                  buffer_after_tss=500,
                  buffer_before_tss=2500,
                  buffer_gene_overlap=500,
@@ -48,7 +49,7 @@ class Csv(Epi2Gene):
                          buffer_before_tss=buffer_before_tss,
                          buffer_gene_overlap=buffer_gene_overlap,
                          gene_start=gene_start, gene_end=gene_end, gene_direction=gene_direction, gene_chr=gene_chr,
-                         gene_name=gene_name
+                         gene_name=gene_name, direction_aware=direction_aware
                          )
         self.filename = filename
         # Set to only look for an in promoter region

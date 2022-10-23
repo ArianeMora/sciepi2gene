@@ -5,6 +5,12 @@
 
 [Link to docs](https://arianemora.github.io/sciepi2gene/)
 
+## Warning!!
+If you have non normal chr's please remove them it will make the program extremely slow.
+
+Another warning: If you have duplicates (i.e. multiple things with the same start and end it will be extremely slow!
+
+
 Sci-epi2gene maps events annotated to a genome location to nearby genes - i.e. peaks from histone modification data
 ChIP-seq experiemnts stored as bed data, or DNA methylation data in csv format (e.g. output from DMRseq, methylKit or methylSig).
 

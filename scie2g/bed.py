@@ -112,8 +112,10 @@ class Bed(Epi2Gene):
         self.cur_loc_idx, self.cur_gene_idx, count = 0, 0, 0
         first = True
         num_genes = len(self.gene_annot_values)
+        bed_idx = -1
         with open(self.filename, 'r+') as bedfile:
-            for bed_idx, line in enumerate(tqdm(bedfile)):
+            for line in tqdm(bedfile):
+                bed_idx += 1
                 self.cur_line = line
                 line = line.split('\t')
                 loc_chr = line[CHROM]

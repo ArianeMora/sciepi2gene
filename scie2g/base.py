@@ -40,7 +40,7 @@ class Epi2Gene:
                  buffer_before_tss=2500,
                  buffer_gene_overlap=500, gene_start=3, gene_end=4, gene_chr=2,
                  gene_direction=5, gene_name=0, gene_id_type=None, output_dir='.', sciutil=None,
-                 hdr_gene_idx=4):
+                 hdr_gene_idx=4, direction_aware=False):
 
         self.u = SciUtil() if sciutil is None else sciutil
         # Settings for choosing the overlap
@@ -56,6 +56,7 @@ class Epi2Gene:
         self.hdr_gene_idx, self.biomart, self.gene_info_df = hdr_gene_idx, None, None
         self.gene_annot_df, self.gene_annot_values = pd.DataFrame(), []
         self.num_genes = 0
+        self.direction_aware = direction_aware
         # set the gene information of throw warning that they need to generate this
 
     def assign_locations_to_genes(self):
@@ -86,13 +87,26 @@ class Epi2Gene:
         self.gene_annot_values = self.gene_annot_df.values
         self.num_genes = len(self.gene_annot_values)
 
+    def set_annotation_from_gtf(self, gene_annotation_file):
+        """ Set an annotation from a GTF file. """
+        # ToDo.
+        return
+
     def set_annotation_from_bed_file(self, gene_annotation_file):
         # Assume the file is the correct format (i.e. from scibiomart)
-        self.gene_annot_df = pd.read_csv(gene_annotation_file, sep='\t')
-        self.gene_annot_df.columns = ['external_gene_name', 'chr', 'start', 'end', 'direction', 'sample_type']
+        self.gene_annot_df = pd.read_csv(gene_annotation_file, sep='\t', header=None, comment='#')
+        self.gene_annot_df.rename(columns={0: 'chr', 1: 'start_position', 2: 'end_position', 3: 'name',
+                                                   5: 'direction', 4: 'strand'}, inplace=True)
+        self.gene_start = 1
+        self.gene_end = 2
+        self.gene_chr = 0,
+        self.gene_direction = 5
+        self.gene_name = 3
+        if len(self.gene_annot_df.columns) < 5: # might only have start, end
+            self.gene_annot_df['strand'] = '.'
+            self.gene_annot_df['direction'] = 1
         # Ensure it is sorted
         self.biomart = SciBiomartApi()
-        self.gene_annot_df = self.biomart.sort_df_on_starts(self.gene_annot_df)
         # Gene information is just all the values from our annot df
         self.gene_annot_values = self.gene_annot_df.values
         self.num_genes = len(self.gene_annot_values)
@@ -240,16 +254,23 @@ class Epi2Gene:
 
         # Check if we have locs around or accross the starting area
         # First check if this loc is overlapping the gene, if it is, then
-        if self.overlaps(gene_start, gene_end, gene_direction, loc_start, loc_end):
-            # Add this to our rows
-            # Before we move onto the next loc, we want to see if there are any other genes that
-            # meet the same criteria
-            self.update_loc_value(loc_args)
-            # We've already assigned this gene, lets move up 1
-            prev_gene_idx = self.cur_gene_idx
-            self.cur_gene_idx += 1
-            self.find_genes_in_loc(loc_start, loc_end, loc_args)
-            self.cur_gene_idx = prev_gene_idx
+        if not self.direction_aware or loc_args.get('direction') == gene_direction:
+            if self.overlaps(gene_start, gene_end, gene_direction, loc_start, loc_end):
+                # Add this to our rows
+                # Before we move onto the next loc, we want to see if there are any other genes that
+                # meet the same criteria
+                self.update_loc_value(loc_args)
+                # We've already assigned this gene, lets move up 1
+                prev_gene_idx = self.cur_gene_idx
+                self.cur_gene_idx += 1
+                self.find_genes_in_loc(loc_start, loc_end, loc_args)
+                self.cur_gene_idx = prev_gene_idx
+            else:
+                prev_gene_idx = self.cur_gene_idx
+                self.cur_gene_idx += 1
+                self.find_genes_in_loc(loc_start, loc_end, loc_args)
+                # Again we may need to re visit this gene
+                self.cur_gene_idx = prev_gene_idx
         else:
             prev_gene_idx = self.cur_gene_idx
             self.cur_gene_idx += 1
@@ -345,7 +366,7 @@ class Epi2Gene:
 
         """
         try:
-            if 'chr' in loc_chr:
+            if 'chr' in loc_chr and (isinstance(gene_chr, int) or 'chr' not in gene_chr):
                 # Since we're assuming that they have used the scibiomart package (which doesn't have chrs by default)
                 # we need to add those
                 self.gene_annot_df['chromosome_name'] = 'chr' + self.gene_annot_df['chromosome_name'].astype(str)
@@ -386,12 +407,13 @@ class Epi2Gene:
             if gene_chr != self.cur_chr:
                 self.cur_gene_idx = i
                 break
-            if self.overlaps(gene_start, gene_end, gene_direction, loc_start_i, loc_end_i):
-                # Update the gene index
-                self.cur_gene_idx = i
-                self.update_loc_value(loc_args)
-                # Check if we have passed our loc (i.e. both the loc start and end are before our gene
-                # We need to do this in a way where we are aware of the reverse transcribed genes
+            if not self.direction_aware or loc_args.get('direction') == gene_direction:
+                if self.overlaps(gene_start, gene_end, gene_direction, loc_start_i, loc_end_i):
+                    # Update the gene index
+                    self.cur_gene_idx = i
+                    self.update_loc_value(loc_args)
+                    # Check if we have passed our loc (i.e. both the loc start and end are before our gene
+                    # We need to do this in a way where we are aware of the reverse transcribed genes
             if self.overlap_method == 'in_promoter':
                 if (gene_direction > 0 and (loc_end_i < (gene_start - self.buffer_before_tss))) or (gene_direction < 0 and
                                                                                                   (loc_end_i < (gene_end -
