@@ -148,10 +148,13 @@ class Epi2Gene:
         self.gene_chr = 0,
         self.gene_direction = 5
         self.gene_name = 3
-        if len(self.gene_annot_df.columns) < 5: # might only have start, end
+        if len(self.gene_annot_df.columns) < 5:  # might only have start, end
             self.gene_annot_df['strand'] = '.'
             self.gene_annot_df['direction'] = 1
         # Ensure it is sorted
+        # Check the direcion as well
+        if not isinstance(self.gene_annot_df['direction'].values[0], int):
+            self.gene_annot_df['direction']= [1 if x == '+' else -1 for x in self.gene_annot_df['direction'].values]
         self.biomart = SciBiomartApi()
         # Gene information is just all the values from our annot df
         self.gene_annot_values = self.gene_annot_df.values
@@ -411,27 +414,19 @@ class Epi2Gene:
         -------
 
         """
-        try:
-            if 'chr' in loc_chr and (isinstance(gene_chr, int) or 'chr' not in gene_chr):
-                # Since we're assuming that they have used the scibiomart package (which doesn't have chrs by default)
-                # we need to add those
-                self.gene_annot_df['chromosome_name'] = 'chr' + self.gene_annot_df['chromosome_name'].astype(str)
-                self.gene_annot_values = self.gene_annot_df.values
-                msg = f'Warning: Your input file used different chr conventions to ensembl: {loc_chr} vs {gene_chr} ' \
-                      f'\nWe have added chr prefix to the ensembl chrs.' \
-                      f'\nfile: {self.filename}'
-                self.u.warn_p([msg])
-        except Exception as e:
-            # Catch any exceptions and raise an error
-            msg = f'Issue with your chromosone conventions: {loc_chr} vs {gene_chr} ' \
+        if 'chr' in loc_chr and (isinstance(gene_chr, int) or 'chr' not in gene_chr):
+            # Since we're assuming that they have used the scibiomart package (which doesn't have chrs by default)
+            # we need to add those
+            msg = f'Warning: Your input file used different chr conventions to ensembl: {loc_chr} vs {gene_chr} ' \
+                  f'\nIf these do not match there will be no overlaps found. Please check your files to ensure your ' \
+                  f'chromosome names match in ' \
                   f'\nfile: {self.filename}'
-            self.u.err_p([msg])
-            raise Epi2GeneException(msg)
+            self.u.warn_p([msg])
 
     def find_genes_in_loc(self, loc_start_i: int, loc_end_i: int, loc_args: dict) -> None:
         """
         Searchers the region for any genes. This is done so that if we have a broad location e.g.
-        H3K27me3 that might have a peak accross many genes we want to indicate that these genes are associated
+        H3K27me3 that might have a peak across many genes we want to indicate that these genes are associated
         with the region.
 
         Parameters

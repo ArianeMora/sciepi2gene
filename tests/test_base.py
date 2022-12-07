@@ -57,6 +57,13 @@ class TestClass(unittest.TestCase):
 
 class TestEpi2Gene(TestClass):
 
+    def test_bed_annot(self):
+        self.setup_class()
+        """ Tests the generic function of the bed data """
+        l2g = Epi2Gene('', [])
+        l2g.set_annotation_from_bed_file('data/GCF_000001635.27_GRCm39.bed')
+
+
     def test_generate_gene_info(self):
         self.setup_class()
         l2g = Epi2Gene('', [])

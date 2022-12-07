@@ -77,6 +77,19 @@ class TestBed(TestClass):
         assert len(found_genes) == len(genes)
         assert len(annotated_genes) > len(genes)
 
+    def test_bed_annot(self):
+        self.setup_class()
+        """ Tests the generic function of the bed data """
+        bed = Bed('data/test_altmapping_H3K27ac.bed')
+        # Add the gene annot
+        bed.set_annotation_from_bed_file('data/GCF_000001635.27_GRCm39.bed')
+        # Now we can run the assign values
+        bed.assign_locations_to_genes()
+        bed.save_loc_to_csv(f'{self.data_dir}test_altmapping_H3K27ac_output.csv')
+        found_loc_df = bed.loc_df
+        print(found_loc_df.head())
+        # Re-read it in and confirm the genes were found (These are the last column in the original file)
+
     def test_bed_unsorted_annot(self):
         self.setup_class()
         # Test it on an unsorted list as well
