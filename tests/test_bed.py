@@ -90,6 +90,21 @@ class TestBed(TestClass):
         print(found_loc_df.head())
         # Re-read it in and confirm the genes were found (These are the last column in the original file)
 
+    def test_multi_bed_annot(self):
+        self.setup_class()
+        """ Tests the generic function of the bed data """
+        bed = Bed('data/test_altmapping_H3K27ac.bed')
+        # Add the gene annot
+        bed.set_annotation_from_bed_files(['data/GCF_000001635.27_1.bed', 'data/GCF_000001635.27_2.bed',
+                                           'data/GCF_000001635.27_3.bed'])
+        # Now we can run the assign values
+        bed.assign_locations_to_genes()
+        bed.save_loc_to_csv(f'{self.data_dir}test_altmapping_H3K27ac_output_v2.csv')
+        found_loc_df = bed.loc_df
+        print(found_loc_df.head())
+        # Re-read it in and confirm the genes were found (These are the last column in the original file)
+
+
     def test_bed_unsorted_annot(self):
         self.setup_class()
         # Test it on an unsorted list as well

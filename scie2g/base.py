@@ -129,6 +129,9 @@ class Epi2Gene:
         if len(self.gene_annot_df.columns) < 5:  # might only have start, end
             self.gene_annot_df['strand'] = '.'
             self.gene_annot_df['direction'] = 1
+        # Check the direction as well
+        if not isinstance(self.gene_annot_df['direction'].values[0], int):
+            self.gene_annot_df['direction'] = [1 if x == '+' else -1 for x in self.gene_annot_df['direction'].values]
         # Ensure it is sorted
         self.biomart = SciBiomartApi()
         # Gene information is just all the values from our annot df
