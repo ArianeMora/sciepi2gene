@@ -56,7 +56,6 @@ class TestClass(unittest.TestCase):
 
 class TestBed(TestClass):
 
-
     def test_bed(self):
         self.setup_class()
         """ Tests the generic function of the bed data """
@@ -157,18 +156,6 @@ class TestBed(TestClass):
                   chr_idx=0, start_idx=1,
                   end_idx=0, peak_value=4, header_extra='"0","1","2","3","6"', sep=',')
             print(context)
-
-    def test_tmp(self):
-        f = Bed(f'/Users/ariane/Documents/code/Splicing_in_FH-deficiency_private/data/iCLIP/xlsites/smb-hk-2-29-fh-ci10-rep2-20200123-ju_cDNA_unique.bed',
-                chr_idx=0, start_idx=1, end_idx=2,
-                peak_value=4, header_extra="3,5",
-                overlap_method='overlaps',
-                buffer_after_tss=0,
-                buffer_before_tss=0,
-                buffer_gene_overlap=0)
-        f.set_annotation_from_file('/Users/ariane/Documents/code/Splicing_in_FH-deficiency_private/data/RNA/Homo_sapiens.GRCh38.106.Exon.sorted.csv')
-        # Now we can run the assign values
-        f.assign_locations_to_genes()
 
 
     def test_chromhmm_bed(self):

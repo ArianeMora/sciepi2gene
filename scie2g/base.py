@@ -77,7 +77,7 @@ class Epi2Gene:
     Generation of gene data.
     -----------------------------------------------------------------
     """
-    def set_annotation_from_file(self, gene_annotation_file):
+    def set_annotation_from_file(self, gene_annotation_file, sep=','):
         # Assume the file is the correct format (i.e. from scibiomart)
         self.gene_annot_df = pd.read_csv(gene_annotation_file)
         # Ensure it is sorted
@@ -89,11 +89,57 @@ class Epi2Gene:
 
     def set_annotation_from_gtf(self, gene_annotation_file):
         """ Set an annotation from a GTF file. """
-        # ToDo.
-        return
+        # Assume the file is the correct format (i.e. from scibiomart)
+        self.gene_annot_df = pd.read_csv(gene_annotation_file, header=None, sep='\t', comment='#')
+        self.gene_annot_df.columns = ['chr', 'ref', 'label', 'start_position', 'end_position', 'score', 'direction',
+                                      'strand', 'description']
+        self.gene_annot_df['name'] = [g.split(';')[0] for g in self.gene_annot_df['description'].values]
+        # NC_000913.3 RefSeq  gene    1001807 1002877 .   +   .   ID=gene-b0941;Dbxref=ASAP:ABE-0003191,ECOCYC:G6483,GeneID:947185;Name=elfG;gbkey=Gene;gene=elfG;gene_biotype=protein_coding;gene_synonym=ECK0932,ycbT;locus_tag=b0941
+        # We assume the GFF is already sorted
+        # Gene information is just all the values from our annot df
+        self.gene_annot_values = self.gene_annot_df.values
+        self.num_genes = len(self.gene_annot_values)
+
+    def set_annotation_from_bed_files(self, bed_files: list, save_file=False, output_filename=None):
+        """
+        Creates an annotation file from multiple bed files. Basically consolidates them to a single bed file then sets
+        that as the annotation file.
+
+        Bed files needs to be the full path to the bed file.
+        """
+        if save_file:
+            output_filename = output_filename if output_filename else 'merged_beds.bed'
+        # Otherwise convert each bed file to a pandas dataframe and then sort
+        bed_df = pd.DataFrame()
+        for bed_file in bed_files:
+            bed_tmp = pd.read_csv(bed_file, sep='\t', header=None, comment='#')
+            bed_df = bed_df.append(bed_tmp)
+
+        # Save it if the have selected this option
+        if save_file:
+            bed_df.to_csv(output_filename)
+        self.gene_annot_df = bed_df
+        self.gene_annot_df.rename(columns={0: 'chr', 1: 'start_position', 2: 'end_position', 3: 'name',
+                                           5: 'direction', 4: 'strand'}, inplace=True)
+        self.gene_start = 1
+        self.gene_end = 2
+        self.gene_chr = 0,
+        self.gene_direction = 5
+        self.gene_name = 3
+        if len(self.gene_annot_df.columns) < 5:  # might only have start, end
+            self.gene_annot_df['strand'] = '.'
+            self.gene_annot_df['direction'] = 1
+        # Ensure it is sorted
+        self.biomart = SciBiomartApi()
+        # Gene information is just all the values from our annot df
+        self.gene_annot_values = self.gene_annot_df.values
+        self.num_genes = len(self.gene_annot_values)
 
     def set_annotation_from_bed_file(self, gene_annotation_file):
-        # Assume the file is the correct format (i.e. from scibiomart)
+        """
+        Assume the file is the correct format (i.e. from UCSC).
+        https://genome.ucsc.edu/FAQ/FAQformat.html
+        """
         self.gene_annot_df = pd.read_csv(gene_annotation_file, sep='\t', header=None, comment='#')
         self.gene_annot_df.rename(columns={0: 'chr', 1: 'start_position', 2: 'end_position', 3: 'name',
                                                    5: 'direction', 4: 'strand'}, inplace=True)
@@ -581,7 +627,6 @@ class Epi2Gene:
 
         self.loc_df = new_df
         return new_df
-
 
     """
     -----------------------------------------------------------------

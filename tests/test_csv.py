@@ -56,26 +56,6 @@ class TestClass(unittest.TestCase):
 
 
 class TestCsv(TestClass):
-    def test_t(self):
-        filename = 'smb-hk-2-29-fh-ci10-rep2-20200123-ju_cDNA_unique.bed'
-        bed_file = pd.read_csv(f'xlsites/{filename}', sep='\t', header=None)
-        bed_file.columns = ['chr', 'start', 'end', 'None', 'count', 'direction']
-        bed_file = bed_file[bed_file['chr'].isin(
-            ['chr1', 'chr10', 'chr11', 'chr12', 'chr13', 'chr14', 'chr15', 'chr16', 'chr17', 'chr18', 'chr19', 'chr2',
-             'chr20', 'chr21', 'chr22', 'chr3', 'chr4', 'chr5', 'chr6', 'chr7', 'chr8', 'chr9', 'chrX', 'chrY'])]
-        bed_file['direction'] = [-1 if c == '-' else 1 for c in bed_file['direction'].values]
-        bed_file.to_csv(f'input/{filename.replace(".bed", ".csv")}', index=False)
-        f = Csv(f'input/{filename.replace(".bed", ".csv")}', 'chr', 'start', 'end', 'count',
-                ['direction'],
-                overlap_method='overlaps',
-                direction_aware=True,
-                buffer_after_tss=0,
-                buffer_before_tss=0,
-                buffer_gene_overlap=0)
-        f.set_annotation_from_file('gencode.v39.primary_assembly.annotation.sorted.csv')
-        # Now we can run the assign values
-        f.assign_locations_to_genes()
-        f.save_loc_to_csv(f'iCLIP/{filename.replace(".bed", "_annot.csv")}')
 
     def test_csv_dmrseq(self):
         self.setup_class()
@@ -86,18 +66,6 @@ class TestCsv(TestClass):
         # Now we can run the assign values
         f.assign_locations_to_genes()
         f.save_loc_to_csv(f'{self.data_dir}test_dmrseq_output.csv')
-
-    def test_tmp(self):
-        data_dir = 'F1_DE_input_TvN/'
-        f = Csv(f'{data_dir}output_regions-dmrseq_cutoff-0.1_31072022.csv',
-                 'seqnames', 'start', 'end', 'stat', ['index.start', 'index.end', 'qval'],
-                )
-        f.set_annotation_from_bed_file(f'{data_dir}UCSC-CpGs_20062022.bed')
-        f.assign_locations_to_genes()
-        f.save_loc_to_csv(f'{data_dir}dmrseq_CpG-island_annot.csv')
-        # f.convert_to_bed(df, f'/Users/ariane/Documents/code/sircle_meth/reproducible/files/cpg_DE_all_patients_ccRCC_sircle_locus.bed',
-        #                  'CPTAC TCGA CpG', None, 'Name')
-
 
     def test_csv_methylkit(self):
         self.setup_class()
