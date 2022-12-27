@@ -38,8 +38,7 @@ class Epi2Gene:
 
     def __init__(self, filename: str, header: list, overlap_method='in_promoter', buffer_after_tss=500,
                  buffer_before_tss=2500,
-                 buffer_gene_overlap=500, gene_start=3, gene_end=4, gene_chr=2,
-                 gene_direction=5, gene_name=0, gene_id_type=None, output_dir='.', sciutil=None,
+                 buffer_gene_overlap=500, gene_column_order=None, gene_id_type=None, output_dir='.', sciutil=None,
                  hdr_gene_idx=4, direction_aware=False):
 
         self.u = SciUtil() if sciutil is None else sciutil
@@ -47,17 +46,18 @@ class Epi2Gene:
         self.overlap_method, self.buffer_gene_overlap = overlap_method, buffer_gene_overlap
         self.buffer_after_tss, self.buffer_before_tss = buffer_after_tss, buffer_before_tss
         # Settings for the biomart
-        self.gene_start, self.gene_end, self.gene_chr = gene_start, gene_end, gene_chr
-        self.gene_direction, self.gene_name, self.gene_id_type = gene_direction, gene_name, gene_id_type
+        self.gene_start, self.gene_end, self.gene_chr = 2, 3, 0
+        self.gene_direction, self.gene_name, self.gene_id_type = 4, 1, gene_id_type
         self.output_dir, self.filename = output_dir, filename
         self.location_to_gene_dict, self.gene_to_location_dict, self.df = None, None, None
         self.cur_gene_idx, self.cur_loc_idx, self.cur_loc_start, self.cur_loc_end, self.cur_chr = 0, 0, 0, 0, None
         self.rows_with_genes, self.header, self.loc_df = [], header, None
         self.hdr_gene_idx, self.biomart, self.gene_info_df = hdr_gene_idx, None, None
         self.gene_annot_df, self.gene_annot_values = pd.DataFrame(), []
+        self.column_order = gene_column_order if gene_column_order else ['chromosome_name', 'external_gene_name',
+                                                                         'start_position', 'end_position', 'strand']
         self.num_genes = 0
         self.direction_aware = direction_aware
-        # set the gene information of throw warning that they need to generate this
 
     def assign_locations_to_genes(self):
         """ Wrapper for the main _assign values method, here we just perform some generic tests & setups """
@@ -79,25 +79,33 @@ class Epi2Gene:
     """
     def set_annotation_from_file(self, gene_annotation_file, sep=','):
         # Assume the file is the correct format (i.e. from scibiomart)
-        self.gene_annot_df = pd.read_csv(gene_annotation_file)
+        self.gene_annot_df = pd.read_csv(gene_annotation_file, sep=sep)
+        convert_dict = {'start_position': int,
+                        'end_position': int,
+                        'chromosome_name': str}
+        self.gene_annot_df = self.gene_annot_df.astype(convert_dict)
         # Ensure it is sorted
         self.biomart = SciBiomartApi()
         self.gene_annot_df = self.biomart.sort_df_on_starts(self.gene_annot_df)
         # Gene information is just all the values from our annot df
-        self.gene_annot_values = self.gene_annot_df.values
+        self.gene_annot_values = self.gene_annot_df[self.column_order].values
         self.num_genes = len(self.gene_annot_values)
 
     def set_annotation_from_gtf(self, gene_annotation_file):
         """ Set an annotation from a GTF file. """
         # Assume the file is the correct format (i.e. from scibiomart)
         self.gene_annot_df = pd.read_csv(gene_annotation_file, header=None, sep='\t', comment='#')
-        self.gene_annot_df.columns = ['chr', 'ref', 'label', 'start_position', 'end_position', 'score', 'direction',
-                                      'strand', 'description']
-        self.gene_annot_df['name'] = [g.split(';')[0] for g in self.gene_annot_df['description'].values]
+        self.gene_annot_df.columns = ['chromosome_name', 'ref', 'label', 'start_position', 'end_position', 'score',
+                                      'direction', 'strand', 'description']
+        convert_dict = {'start_position': int,
+                        'end_position': int,
+                        'chromosome_name': str}
+        self.gene_annot_df = self.gene_annot_df.astype(convert_dict)
+        self.gene_annot_df['external_gene_name'] = [g.split(';')[0] for g in self.gene_annot_df['description'].values]
         # NC_000913.3 RefSeq  gene    1001807 1002877 .   +   .   ID=gene-b0941;Dbxref=ASAP:ABE-0003191,ECOCYC:G6483,GeneID:947185;Name=elfG;gbkey=Gene;gene=elfG;gene_biotype=protein_coding;gene_synonym=ECK0932,ycbT;locus_tag=b0941
         # We assume the GFF is already sorted
         # Gene information is just all the values from our annot df
-        self.gene_annot_values = self.gene_annot_df.values
+        self.gene_annot_values = self.gene_annot_df[self.column_order].values
         self.num_genes = len(self.gene_annot_values)
 
     def set_annotation_from_bed_files(self, bed_files: list, save_file=False, output_filename=None):
@@ -121,21 +129,16 @@ class Epi2Gene:
         self.gene_annot_df = bed_df
         self.gene_annot_df.rename(columns={0: 'chr', 1: 'start_position', 2: 'end_position', 3: 'name',
                                            5: 'direction', 4: 'strand'}, inplace=True)
-        self.gene_start = 1
-        self.gene_end = 2
-        self.gene_chr = 0,
-        self.gene_direction = 5
-        self.gene_name = 3
         if len(self.gene_annot_df.columns) < 5:  # might only have start, end
             self.gene_annot_df['strand'] = '.'
             self.gene_annot_df['direction'] = 1
         # Check the direction as well
         if not isinstance(self.gene_annot_df['direction'].values[0], int):
             self.gene_annot_df['direction'] = [1 if x == '+' else -1 for x in self.gene_annot_df['direction'].values]
-        # Ensure it is sorted
-        self.biomart = SciBiomartApi()
+        # Assume sorted for Bed Files
+        self.gene_annot_df['strand'] = self.gene_annot_df['direction']
         # Gene information is just all the values from our annot df
-        self.gene_annot_values = self.gene_annot_df.values
+        self.gene_annot_values = self.gene_annot_df[self.column_order].values
         self.num_genes = len(self.gene_annot_values)
 
     def set_annotation_from_bed_file(self, gene_annotation_file):
@@ -145,22 +148,21 @@ class Epi2Gene:
         """
         self.gene_annot_df = pd.read_csv(gene_annotation_file, sep='\t', header=None, comment='#')
         self.gene_annot_df.rename(columns={0: 'chr', 1: 'start_position', 2: 'end_position', 3: 'name',
-                                                   5: 'direction', 4: 'strand'}, inplace=True)
-        self.gene_start = 1
-        self.gene_end = 2
-        self.gene_chr = 0,
-        self.gene_direction = 5
-        self.gene_name = 3
+                                           5: 'direction', 4: 'strand'}, inplace=True)
         if len(self.gene_annot_df.columns) < 5:  # might only have start, end
             self.gene_annot_df['strand'] = '.'
             self.gene_annot_df['direction'] = 1
+        convert_dict = {'start_position': int,
+                        'end_position': int,
+                        'chromosome_name': str}
+        self.gene_annot_df = self.gene_annot_df.astype(convert_dict)
         # Ensure it is sorted
         # Check the direcion as well
         if not isinstance(self.gene_annot_df['direction'].values[0], int):
             self.gene_annot_df['direction']= [1 if x == '+' else -1 for x in self.gene_annot_df['direction'].values]
-        self.biomart = SciBiomartApi()
         # Gene information is just all the values from our annot df
-        self.gene_annot_values = self.gene_annot_df.values
+        self.gene_annot_df['strand'] = self.gene_annot_df['direction']
+        self.gene_annot_values = self.gene_annot_df[self.column_order].values
         self.num_genes = len(self.gene_annot_values)
 
     def set_annotation_using_biomart(self, mart: str, dataset: str, filter_dict=None):
@@ -169,11 +171,14 @@ class Epi2Gene:
         self.biomart.set_dataset(dataset)
         # Finally lets make our regions of interest
         self.gene_annot_df = self.biomart.run_default(filter_dict)
+        convert_dict = {'start_position': int,
+                        'end_position': int,
+                        'chromosome_name': str}
+        self.gene_annot_df = self.gene_annot_df.astype(convert_dict)
         # Sort the values
         self.gene_annot_df = self.biomart.sort_df_on_starts(self.gene_annot_df)
-
         # Gene information is just all the values from our annot df
-        self.gene_annot_values = self.gene_annot_df.values
+        self.gene_annot_values = self.gene_annot_df[self.column_order].values
         self.num_genes = len(self.gene_annot_values)
 
     def save_annotation(self, output_dir=None):
@@ -417,7 +422,8 @@ class Epi2Gene:
         -------
 
         """
-        if 'chr' in loc_chr and (isinstance(gene_chr, int) or 'chr' not in gene_chr):
+        if ('chr' in loc_chr and (isinstance(gene_chr, int) or 'chr' not in gene_chr)) or\
+                ('chr' in gene_chr and (isinstance(loc_chr, int) or 'chr' not in loc_chr)):
             # Since we're assuming that they have used the scibiomart package (which doesn't have chrs by default)
             # we need to add those
             msg = f'Warning: Your input file used different chr conventions to ensembl: {loc_chr} vs {gene_chr} ' \
@@ -495,7 +501,7 @@ class Epi2Gene:
             self.u.err_p([msg])
             raise Epi2GeneException(msg)
 
-        return list(self.gene_annot_df.columns)
+        return list(self.column_order)
 
     def get_gene_info_as_df(self, columns=None, keep_unassigned=True) -> pd.DataFrame:
         """

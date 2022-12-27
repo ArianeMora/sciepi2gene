@@ -27,14 +27,13 @@ class Bed(Epi2Gene):
 
     def __init__(self, filename: str, header=None, overlap_method='overlaps', output_bed_file=None,
                  buffer_after_tss=500, buffer_before_tss=2500, buffer_gene_overlap=500,
-                 gene_start=3, gene_end=4, gene_chr=2, gene_direction=5, gene_name=0,
+                 gene_column_order=None,
                  chr_idx=0, start_idx=1, end_idx=2, peak_value=6, header_extra="8,9", sep='\t'):
         super().__init__(filename, header, overlap_method=overlap_method,
                          buffer_after_tss=buffer_after_tss,
                          buffer_before_tss=buffer_before_tss,
                          buffer_gene_overlap=buffer_gene_overlap,
-                         gene_start=gene_start, gene_end=gene_end, gene_direction=gene_direction, gene_chr=gene_chr,
-                         gene_name=gene_name)
+                         gene_column_order=gene_column_order)
         self.filename = filename
         self.location_to_gene_dict, self.loc_idxs_np, self.gene_to_location_dict = defaultdict(list), None,\
                                                                                    defaultdict(list)

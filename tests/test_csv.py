@@ -57,6 +57,22 @@ class TestClass(unittest.TestCase):
 
 class TestCsv(TestClass):
 
+    def test_csv_limma(self):
+        self.setup_class()
+        file_name = 'data/Illunima_CPTAC_Infiltrating_duct_carcinoma__NOS_DMCLimma.csv'
+        f = pd.read_csv(file_name)
+        f['chrs'] = [c.replace('chr', '') for c in f['chrom'].values]
+        f.to_csv('data/Illunima_CPTAC_Infiltrating_duct_carcinoma__NOS_DMCLimma_2.csv', index=False)
+
+        mapper = Csv('data/Illunima_CPTAC_Infiltrating_duct_carcinoma__NOS_DMCLimma_2.csv',
+                     'chrs', 'start', 'start', 't',
+                     ['direction', 'logFC', 'AveExpr', 'P.Value', 'adj.P.Val', 'UCSC_RefGene_Name', 'Strand'],
+                     overlap_method='in_promoter',
+                     direction_aware=True)
+        mapper.set_annotation_from_file('data/NCBIRefSeq_GRCh38_hg38.2.csv')
+        mapper.assign_locations_to_genes()
+        mapper.save_loc_to_csv(f'{file_name.replace(".csv", "_annot.csv")}')
+
     def test_csv_dmrseq(self):
         self.setup_class()
         """ Tests the generic function of the bed data """

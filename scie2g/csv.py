@@ -36,8 +36,8 @@ class Csv(Epi2Gene):
                  buffer_after_tss=500,
                  buffer_before_tss=2500,
                  buffer_gene_overlap=500,
-                 gene_start=3, gene_end=4, gene_chr=2,
-                 gene_direction=5, gene_name=0, sep=','
+                 gene_column_order=None,
+                 sep=','
                  ):
         self.chr_str, self.start_str, self.end_str, self.value_str = chr_str, start, end, value
         header = ['idx', self.chr_str, self.start_str, self.end_str, 'gene_idx', value]
@@ -48,8 +48,7 @@ class Csv(Epi2Gene):
                          buffer_after_tss=buffer_after_tss,
                          buffer_before_tss=buffer_before_tss,
                          buffer_gene_overlap=buffer_gene_overlap,
-                         gene_start=gene_start, gene_end=gene_end, gene_direction=gene_direction, gene_chr=gene_chr,
-                         gene_name=gene_name, direction_aware=direction_aware
+                         direction_aware=direction_aware, gene_column_order=gene_column_order
                          )
         self.filename = filename
         # Set to only look for an in promoter region
@@ -148,7 +147,7 @@ class Csv(Epi2Gene):
 
         # Lastly, we want to at chr to all the seqnames so that they are in ncbi format
         if 'chr' not in str(df[self.chr_str].values[0]):
-            df['chr'] = 'chr' + df[self.chr_str].astype(str)
+            df['chr'] = df[self.chr_str].astype(str)
         else:
             df['chr'] = df[self.chr_str].values
 
